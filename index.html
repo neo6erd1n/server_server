@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грузовик-Экспресс | Надёжные грузоперевозки</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --logo: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/truck-bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        nav {
+            background-color: var(--primary);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-left: 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: var(--secondary);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .contact {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1544620347-c4fd8a3b1193');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        /* Стили для модальных окон */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow: auto;
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: slideDown 0.3s;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .close-btn:hover {
+            color: var(--secondary);
+        }
+        
+        .modal-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .price-list {
+            margin-top: 20px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Стили для модального окна успешной отправки */
+        .success-modal .modal-content {
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 90%;
+                margin: 10% auto;
+                padding: 20px;
+            }
+        }
+        .nav-container .logo:not(span) {
+            color: var(--light);
+        }
+
+        #contact .section-title {
+            color: var(--light);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Грузовик<span>-Экспресс</span></h1>
+            <p class="slogan">Быстро. Надёжно. По доступным ценам</p>
+            <a href="#contact" class="btn">Заказать перевозку</a>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Грузовик<span>-Экспресс</span></div>
+            <ul class="nav-links">
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О компании</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="tel:+78001234567">+7 (800) 123-45-67</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services">
+                <div class="service-card" onclick="openModal('russia')">
+                    <div class="service-img">
+                        <img src="images/russia-delivery.jpeg" alt="Грузоперевозки по России">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Грузоперевозки по России</h3>
+                        <p>Быстрая и безопасная доставка грузов любой сложности по всей территории России.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" onclick="openModal('international')">
+                    <div class="service-img">
+                        <img src="images/international-shipping.jpeg" alt="Международные грузоперевозки">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Международные перевозки</h3>
+                        <p>Организуем доставку грузов в любую точку мира с полным таможенным сопровождением.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" onclick="openModal('moving')">
+                    <div class="service-img">
+                        <img src="images/kvatrita_pereezd.jpeg" alt="Квартирные переезды">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Квартирные переезды</h3>
+                        <p>Аккуратный и бережный переезд без хлопот. Упаковка, погрузка, транспортировка.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Модальное окно для Грузоперевозки по России -->
+    <div id="russia-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('russia')">&times;</span>
+            <h2 class="modal-title">Грузоперевозки по России</h2>
+            <div class="modal-body">
+                <div>
+                    <img src="images/russia-delivery.jpeg" alt="Грузоперевозки по России" class="modal-img">
+                    <p>Мы осуществляем перевозки грузов по всей территории Российской Федерации. Наши маршруты охватывают все регионы от Калининграда до Владивостока.</p>
+                    <h3>Преимущества:</h3>
+                    <ul>
+                        <li>Собственный автопарк</li>
+                        <li>GPS-мониторинг</li>
+                        <li>Страхование грузов</li>
+                        <li>Круглосуточная поддержка</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Тарифы</h3>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span>До 1 тонны</span>
+                            <span>от 50 руб./км</span>
+                        </div>
+                        <div class="price-item">
+                            <span>1-5 тонн</span>
+                            <span>от 40 руб./км</span>
+                        </div>
+                        <div class="price-item">
+                            <span>5-10 тонн</span>
+                            <span>от 35 руб./км</span>
+                        </div>
+                        <div class="price-item">
+                            <span>10-20 тонн</span>
+                            <span>от 30 руб./км</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Свыше 20 тонн</span>
+                            <span>Индивидуальный расчет</span>
+                        </div>
+                    </div>
+                    <h3>Примерные сроки</h3>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span>Москва-Санкт-Петербург</span>
+                            <span>1 день</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Москва-Новосибирск</span>
+                            <span>3-4 дня</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Москва-Владивосток</span>
+                            <span>7-9 дней</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn" onclick="closeModal('russia')">Заказать услугу</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для Международных перевозок -->
+    <div id="international-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('international')">&times;</span>
+            <h2 class="modal-title">Международные перевозки</h2>
+            <div class="modal-body">
+                <div>
+                    <img src="images/international-shipping.jpeg" alt="Международные перевозки" class="modal-img">
+                    <p>Организуем доставку грузов в любую точку мира с полным таможенным сопровождением. Работаем со всеми видами транспорта.</p>
+                    <h3>Направления:</h3>
+                    <ul>
+                        <li>Страны СНГ</li>
+                        <li>Европа</li>
+                        <li>Азия</li>
+                        <li>Америка</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Тарифы</h3>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span>Европа (авто)</span>
+                            <span>от 1.5 руб./км</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Азия (авто)</span>
+                            <span>от 2 руб./км</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Авиаперевозки</span>
+                            <span>от 5$/кг</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Морские перевозки</span>
+                            <span>от 1000$/контейнер</span>
+                        </div>
+                    </div>
+                    <h3>Дополнительные услуги</h3>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span>Таможенное оформление</span>
+                            <span>от 5000 руб.</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Сертификация</span>
+                            <span>от 10000 руб.</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Страхование груза</span>
+                            <span>1% от стоимости</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn" onclick="closeModal('international')">Заказать услугу</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для Квартирных переездов -->
+    <div id="moving-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('moving')">&times;</span>
+            <h2 class="modal-title">Квартирные переезды</h2>
+            <div class="modal-body">
+                <div>
+                    <img src="images/kvatrita_pereezd.jpeg" alt="Квартирные переезды" class="modal-img">
+                    <p>Комплексный переезд "под ключ" без хлопот. Мы бережно упакуем, перевезём и расставим все ваши вещи.</p>
+                    <h3>Включено в услугу:</h3>
+                    <ul>
+                        <li>Упаковка вещей</li>
+                        <li>Разборка/сборка мебели</li>
+                        <li>Погрузка/разгрузка</li>
+                        <li>Транспортировка</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Тарифы</h3>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span>1-комнатная квартира</span>
+                            <span>от 5000 руб.</span>
+                        </div>
+                        <div class="price-item">
+                            <span>2-комнатная квартира</span>
+                            <span>от 8000 руб.</span>
+                        </div>
+                        <div class="price-item">
+                            <span>3-комнатная квартира</span>
+                            <span>от 12000 руб.</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Загородный дом</span>
+                            <span>от 15000 руб.</span>
+                        </div>
+                    </div>
+                    <h3>Дополнительные услуги</h3>
+                    <div class="price-list">
+                        <div class="price-item">
+                            <span>Упаковочные материалы</span>
+                            <span>от 1000 руб.</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Дополнительный грузчик</span>
+                            <span>500 руб./час</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Хранение вещей (1 мес.)</span>
+                            <span>от 3000 руб.</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn" onclick="closeModal('moving')">Заказать услугу</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Грузовик-Экспресс - надёжный партнёр в грузоперевозках</h3>
+                    <p>Мы работаем на рынке грузоперевозок более 10 лет. За это время мы перевезли тысячи тонн грузов и заработали репутацию надёжного перевозчика.</p>
+                    <p>Наш автопарк включает более 50 единиц современной техники различной грузоподъёмности. Все водители имеют большой опыт работы и регулярно проходят переподготовку.</p>
+                    <p>Мы предлагаем индивидуальный подход к каждому клиенту и гарантируем сохранность вашего груза.</p>
+                </div>
+                <div class="about-img">
+                    <img src="images/o_nas.jpeg" alt="Наш автопарк">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Оставьте заявку</h2>
+            <div class="contact-form">
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Описание груза</label>
+                        <textarea id="message" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="logo">Грузовик<span>-Экспресс</span></div>
+            <ul class="footer-links">
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О компании</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <p>© 2025 Грузовик-Экспресс. Все права защищены.</p>
+            <p>г. Иваново, пр. Шереметьевский д. 18</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно успешной отправки -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px; text-align: center;">
+            <h2 class="modal-title">Спасибо за заявку!</h2>
+            <p>Мы уже рассматриваем вашу заявку, наш сотрудник свяжется с вами в ближайшее время.</p>
+            <button onclick="closeModal('success')" class="btn" style="margin-top: 20px;">Хорошо</button>
+        </div>
+    </div>
+
+    <script>
+        // Функции для работы с модальными окнами
+        function openModal(service) {
+            document.getElementById(service + '-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(service) {
+            document.getElementById(service + '-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Обработчик отправки формы
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить код для отправки данных формы на сервер
+            
+            // Сбрасываем форму
+            this.reset();
+            
+            // Показываем модальное окно успеха
+            openModal('success');
+        });
+    </script>
+</body>
+</html>
